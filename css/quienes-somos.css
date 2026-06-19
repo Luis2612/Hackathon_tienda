@@ -1,20 +1,3 @@
-:root {
-    --color-primary: #e24585;
-    --color-secondary: #ff5722;
-    --color-highlight: #ff5722;
-    --color-background-grad: linear-gradient(135deg, #fef8fb 0%, #fff0f6 40%, #f7e6f0 100%);
-    --color-surface: rgba(255, 255, 255, 0.76);
-    --color-text: #2c0e1e;
-    --color-text-secondary: #63505a;
-    --font-family: "Barlow", sans-serif;
-    --text-lg: 1.125rem;
-    --text-xl: 1.25rem;
-    --text-2xl: 1.5rem;
-    --shadow-sm: 0 4px 12px rgba(226, 69, 133, 0.05);
-    --shadow-md: 0 8px 24px rgba(226, 69, 133, 0.09);
-    --radius-md: 12px;
-}
-
 body {
     font-family: var(--font-family);
     background: var(--color-background-grad);
