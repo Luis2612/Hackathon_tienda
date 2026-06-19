@@ -1,1 +1,81 @@
-<!-- Carrito de compras -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito | TrendyShop</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/carrito.css">
+</head>
+<body>
+
+    <main class="cart-page">
+
+        <section class="cart">
+            <h1 class="cart__title">Mi Carrito</h1>
+
+            <div id="cart-items" class="cart__items">
+
+                <!-- Ejemplo visual de producto -->
+                <article class="cart-item">
+
+                    <img
+                        src=""
+                        alt="Producto"
+                        class="cart-item__image"
+                    >
+
+                    <div class="cart-item__info">
+                        <h2 class="cart-item__name">
+                            Camiseta Oversize
+                        </h2>
+
+                        <p class="cart-item__price">
+                            $79.900
+                        </p>
+
+                        <p class="cart-item__quantity">
+                            Cantidad: 1
+                        </p>
+                    </div>
+
+                    <button class="cart-item__remove">
+                        Eliminar
+                    </button>
+
+                </article>
+
+            </div>
+        </section>
+
+        <aside class="cart-summary">
+
+            <h2>Resumen de compra</h2>
+
+            <div class="cart-summary__row">
+                <span>Productos</span>
+                <span id="products-count">1</span>
+            </div>
+
+            <div class="cart-summary__row">
+                <span>Total</span>
+                <span id="cart-total">$79.900</span>
+            </div>
+
+            <button class="btn btn--primary">
+                Finalizar compra
+            </button>
+
+            <button class="btn btn--secondary" id="clear-cart">
+                Vaciar carrito
+            </button>
+
+        </aside>
+
+    </main>
+
+    <script type="module" src="../js/app.js"></script>
+
+</body>
+</html>

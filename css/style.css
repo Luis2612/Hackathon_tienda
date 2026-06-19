@@ -1,1 +1,52 @@
-/* Estilos globales */
+:root {
+    /* Colores */
+    --color-primary: #2563EB;
+    --color-secondary: #06B6D4;
+    --color-highlight: #8B5CF6;
+
+    --color-background: #F8FAFC;
+    --color-surface: #FFFFFF;
+
+    --color-text: #1E293B;
+    --color-text-secondary: #64748B;
+
+    --color-danger: #EF4444;
+
+    /* Tipografía */
+    --font-family: "Poppins", Arial, sans-serif;
+
+    --text-sm: 0.875rem;   /* 14px */
+    --text-base: 1rem;     /* 16px */
+    --text-lg: 1.125rem;   /* 18px */
+    --text-xl: 1.25rem;    /* 20px */
+    --text-2xl: 1.5rem;    /* 24px */
+    --text-3xl: 2rem;      /* 32px */
+
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+
+    /* Sombras */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+
+    /* Bordes */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--text-base);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.5;
+}
