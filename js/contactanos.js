@@ -9,18 +9,18 @@ form.addEventListener("submit", function (e) {
   const mensaje = document.getElementById("mensaje").value.trim();
 
   if (nombre === "" || email === "" || mensaje === "") {
-    respuesta.textContent = "⚠️ Por favor completa todos los campos";
+    respuesta.textContent = "Por favor completa todos los campos";
     respuesta.style.color = "red";
     return;
   }
 
   if (!email.includes("@") || !email.includes(".")) {
-    respuesta.textContent = "⚠️ Ingresa un correo válido";
+    respuesta.textContent = "Ingresa un correo válido";
     respuesta.style.color = "red";
     return;
   }
 
-  respuesta.textContent = "✅ Mensaje enviado correctamente. Te responderemos pronto 💌";
+  respuesta.textContent = "Mensaje enviado correctamente. Te responderemos pronto";
   respuesta.style.color = "green";
 
   form.reset();
