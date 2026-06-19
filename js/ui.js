@@ -87,7 +87,7 @@ const UI = {
           });
       }
 
-      this.actualizarResumen(0, 0, 0, 0);
+      this.actualizarResumen(0, 0, 0, 0, 0);
       return;
     }
 
@@ -165,13 +165,25 @@ const UI = {
       });
     });
   },
-  actualizarResumen(subtotal, tax, shipping, total) {
+  actualizarResumen(subtotal, discount, tax, shipping, total) {
     const subtotalEl = document.getElementById("cart-subtotal");
+    const discountRow = document.getElementById("discount-row");
+    const discountEl = document.getElementById("cart-discount");
     const taxEl = document.getElementById("cart-tax");
     const shippingEl = document.getElementById("cart-shipping");
     const totalEl = document.getElementById("cart-total");
 
     if (subtotalEl) subtotalEl.textContent = `$${subtotal.toLocaleString('es-CO')}`;
+
+    if (discountRow && discountEl) {
+      if (discount > 0) {
+        discountEl.textContent = `-$${discount.toLocaleString('es-CO')}`;
+        discountRow.classList.remove("d-none");
+      } else {
+        discountRow.classList.add("d-none");
+      }
+    }
+
     if (taxEl) taxEl.textContent = `$${tax.toLocaleString('es-CO')}`;
     if (shippingEl) shippingEl.textContent = shipping === 0 ? "Gratis" : `$${shipping.toLocaleString('es-CO')}`;
     if (totalEl) totalEl.textContent = `$${total.toLocaleString('es-CO')}`;
@@ -218,6 +230,9 @@ const UI = {
 window.UI = UI;
 
 document.addEventListener("DOMContentLoaded", () => {
+  if (window.Carrito) {
+    window.Carrito.init();
+  }
   const nav = document.querySelector(".navEnlaces");
   if (!nav) return;
 
@@ -227,7 +242,7 @@ document.addEventListener("DOMContentLoaded", () => {
   authContainer.className = "d-flex align-items-center d-inline-block ms-3";
 
   const isSubfolder = window.location.pathname.split('/').filter(Boolean).some(part => 
-    ["catalogo", "about", "contactanos", "carrito", "login"].includes(part.toLowerCase())
+    ["catalogo", "about", "contactanos", "carrito", "login", "checkout"].includes(part.toLowerCase())
   );
   const prefix = isSubfolder ? "../" : "";
 
