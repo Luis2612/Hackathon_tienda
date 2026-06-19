@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Iniciar Sesión | TrendyShop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Barlow:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="../assets/images/logo.png" type="image/png">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/login.css">
+</head>
+<body class="d-flex flex-column min-vh-100 bg-light">
+  
+  <header class="navbar">
+      <a class="logo d-flex align-items-center gap-2 text-white text-decoration-none" href="../index.html">
+          <img src="../assets/images/logo.png" alt="TS" onerror="this.src='https://via.placeholder.com/70?text=TS';">
+          <span class="fw-bold" style="font-family: 'Outfit', sans-serif; font-size: 1.4rem;">TrendyShop</span>
+      </a>
+      <nav class="navEnlaces d-flex align-items-center">
+          <a href="../index.html">Inicio</a>
+          <a href="../catalogo/index.html">Catálogo</a>
+          <a href="../about/quienes-somos.html">Nosotros</a>
+          <a href="../contactanos/index.html">Contacto</a>
+          <a href="../carrito/index.html" class="position-relative ms-3 btn btn-outline-light btn-sm px-3 py-1">
+              <i class="bi bi-cart3 me-1"></i> Carrito
+              <span id="cart-badge" class="badge bg-danger rounded-pill position-absolute top-0 start-100 translate-middle d-none">0</span>
+          </a>
+      </nav>
+  </header>
+
+  <main class="flex-grow-1 d-flex align-items-center justify-content-center py-5 container">
+    <div class="card login-card p-4 p-md-5 shadow border-0">
+      
+      <div class="text-center mb-4">
+        <img src="../assets/images/logo.png" alt="TrendyShop Logo" class="mb-2" style="width: 80px;">
+        <h1 class="h3 fw-bold" style="font-family: 'Outfit', sans-serif; color: #250f1a;">¡Te damos la bienvenida!</h1>
+        <p class="text-muted small">Inicia sesión para una experiencia de compra personalizada</p>
+      </div>
+
+      <div id="login-error-alert" class="alert alert-danger d-none align-items-center gap-2 py-3 rounded-3" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        <div id="login-error-msg">Usuario o contraseña incorrectos.</div>
+      </div>
+
+      <form id="loginForm">
+        <div class="mb-3">
+          <label for="username" class="form-label fw-semibold">Nombre de usuario</label>
+          <div class="input-group">
+            <span class="input-group-text bg-transparent border-end-0" style="border-radius: 12px 0 0 12px; border-color: rgba(226, 69, 133, 0.15);"><i class="bi bi-person text-muted"></i></span>
+            <input type="text" id="username" class="form-control border-start-0 ps-0" style="border-radius: 0 12px 12px 0;" placeholder="Ingresa tu usuario de prueba" required>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="password" class="form-label fw-semibold">Contraseña</label>
+          <div class="input-group">
+            <span class="input-group-text bg-transparent border-end-0" style="border-radius: 12px 0 0 12px; border-color: rgba(226, 69, 133, 0.15);"><i class="bi bi-lock text-muted"></i></span>
+            <input type="password" id="password" class="form-control border-start-0 ps-0" style="border-radius: 0 12px 12px 0;" placeholder="Ingresa tu contraseña" required>
+          </div>
+        </div>
+
+        <button type="submit" id="login-submit-btn" class="btn btn-primary w-100 py-3 fw-bold shadow-sm rounded-pill mb-3">
+          <span id="login-btn-spinner" class="spinner-border spinner-border-sm me-2 d-none" role="status" aria-hidden="true"></span>
+          Iniciar Sesión
+        </button>
+      </form>
+
+      <div class="p-3 bg-light rounded-3 text-center border mt-2">
+        <span class="badge bg-secondary text-uppercase px-2 py-1 mb-2" style="font-size: 0.7rem; background-color: var(--color-primary) !important;">Credenciales de Prueba</span>
+        <div class="small text-muted">
+          <strong>Usuario:</strong> <span class="user-select-all text-dark font-monospace">mor_2314</span><br>
+          <strong>Contraseña:</strong> <span class="user-select-all text-dark font-monospace">83r5^_</span>
+        </div>
+      </div>
+
+      <div class="text-center mt-4">
+        <a href="../index.html" class="text-decoration-none text-primary small fw-semibold">
+          <i class="bi bi-arrow-left me-1"></i> Volver a la página principal
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="bg-dark text-white-50 py-4 mt-auto border-top">
+      <div class="container text-center">
+          <p class="mb-1">&copy; 2026 TrendyShop. Todos los derechos reservados.</p>
+          <p class="small mb-0">Bogotá & Medellín, Colombia.</p>
+      </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script src="../js/productos.js"></script>
+  <script src="../services/apiService.js"></script>
+  <script src="../services/productService.js"></script>
+  <script src="../services/cartService.js"></script>
+  <script src="../js/carrito.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/login.js"></script>
+</body>
+</html>

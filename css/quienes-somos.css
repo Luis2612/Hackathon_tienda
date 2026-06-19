@@ -1,0 +1,123 @@
+:root {
+    --color-primary: #e24585;
+    --color-secondary: #ff5722;
+    --color-highlight: #ff5722;
+    --color-background-grad: linear-gradient(135deg, #fef8fb 0%, #fff0f6 40%, #f7e6f0 100%);
+    --color-surface: rgba(255, 255, 255, 0.76);
+    --color-text: #2c0e1e;
+    --color-text-secondary: #63505a;
+    --font-family: "Barlow", sans-serif;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --shadow-sm: 0 4px 12px rgba(226, 69, 133, 0.05);
+    --shadow-md: 0 8px 24px rgba(226, 69, 133, 0.09);
+    --radius-md: 12px;
+}
+
+body {
+    font-family: var(--font-family);
+    background: var(--color-background-grad);
+    background-attachment: fixed;
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+.section {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 30px;
+    background: var(--color-surface);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(226, 69, 133, 0.14);
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(226, 69, 133, 0.12);
+}
+
+.section h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    background: linear-gradient(135deg, #e24585 0%, #ff5722 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.section p {
+    font-size: 1.05rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.gallery-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.4rem;
+    color: var(--color-highlight);
+    text-align: center;
+    margin: 40px 0 25px 0;
+    font-weight: 700;
+}
+
+.gallery {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.image-card {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(226, 69, 133, 0.12);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.image-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px rgba(226, 69, 133, 0.18);
+    border-color: rgba(226, 69, 133, 0.3);
+}
+
+.image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.image-card:hover img {
+    transform: scale(1.08);
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(180deg, transparent, rgba(37, 15, 26, 0.9));
+    color: white;
+    font-size: 1.1rem;
+    font-family: 'Outfit', sans-serif;
+    text-align: center;
+    padding: 20px 10px 12px 10px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.image-card:hover .overlay {
+    background: linear-gradient(180deg, transparent, rgba(226, 69, 133, 0.95));
+}
