@@ -1,1 +1,88 @@
-/* Estilos globales */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+.navbar{
+    background:#222;
+    padding:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo img{
+    width:70px;
+}
+
+.navEnlaces a{
+    color:white;
+    text-decoration:none;
+    margin-left:15px;
+}
+
+.section1{
+    text-align:center;
+    padding:80px 20px;
+}
+
+.boton{
+    display:inline-block;
+    background:#007bff;
+    color:white;
+    padding:10px 20px;
+    text-decoration:none;
+    border-radius:5px;
+    margin-top:15px;
+}
+
+.boton:hover{
+    background:#0056b3;
+}
+
+.section2{
+    text-align:center;
+    padding:40px 20px;
+}
+.section3{
+    text-align:center;
+    padding:40px 20px;
+}
+
+.section3 h2{
+    margin-bottom:30px;
+}
+
+.cards{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.card{
+    border:1px solid #ddd;
+    padding:20px;
+    width:220px;
+    min-height:180px;
+    border-radius:5px;
+}
+.card img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+}
+
+.card p{
+    margin:10px 0;
+}
+
+footer{
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:15px;
+    margin-top:30px;
+}
