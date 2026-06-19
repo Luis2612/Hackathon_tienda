@@ -94,7 +94,9 @@ const UI = {
     let html = "";
     items.forEach(item => {
       const product = item.product;
-      const price = product.precio || product.price || 0;
+      const price =
+        product.precioConIva ??
+        Math.round((product.precio || product.price || 0) * 1.19);
       const subtotal = price * item.quantity;
 
       html += `
@@ -236,14 +238,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const nav = document.querySelector(".navEnlaces");
   if (!nav) return;
 
-  const cartBtn = Array.from(nav.querySelectorAll("a")).find(a => 
+  const cartBtn = Array.from(nav.querySelectorAll("a")).find(a =>
     a.textContent.includes("Carrito") || a.querySelector(".bi-cart3")
   );
 
   const authContainer = document.createElement("div");
   authContainer.className = "d-flex align-items-center d-inline-block ms-3";
 
-  const isSubfolder = window.location.pathname.split('/').filter(Boolean).some(part => 
+  const isSubfolder = window.location.pathname.split('/').filter(Boolean).some(part =>
     ["catalogo", "about", "contactanos", "carrito", "login", "checkout"].includes(part.toLowerCase())
   );
   const prefix = isSubfolder ? "../" : "";
