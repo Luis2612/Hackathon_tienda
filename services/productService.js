@@ -1,11 +1,14 @@
 const ProductService = {
   mapProduct(item) {
+    const tasaCambioCop = 4000;
+    const precioConvertido = Math.round(item.price * tasaCambioCop);
+
     return {
       id: item.id,
       nombre: item.title,
       title: item.title,
-      precio: item.price,
-      price: item.price,
+      precio: precioConvertido,
+      price: precioConvertido,
       imagen: item.image,
       image: item.image,
       descripcion: item.description,
@@ -24,6 +27,16 @@ const ProductService = {
       console.warn("Fallo al obtener productos de la API, usando respaldo local...", error);
       const fallback = window.PRODUCTOS_RESPALDO || [];
       return fallback;
+    }
+  },
+  async getFeaturedProducts(limit = 4) {
+    try {
+      const data = await window.ApiService.get(`/products?limit=${limit}`);
+      return data.map(item => this.mapProduct(item));
+    } catch (error) {
+      console.warn(`Fallo al obtener productos destacados de la API, usando respaldo local...`, error);
+      const fallback = window.PRODUCTOS_RESPALDO || [];
+      return fallback.slice(0, limit);
     }
   },
   async getProductById(id) {
