@@ -4,7 +4,7 @@ body {
 }
 
 .hero-contacto {
-  height: 45vh; /* 👈 MÁS BAJITO */
+  height: 45vh; 
 
   background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
               url('https://images.unsplash.com/photo-1596462502278-27bfdc403348');
