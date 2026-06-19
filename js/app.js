@@ -15,14 +15,15 @@ function inicializarPaginaCarrito() {
   window.UI.mostrarCarrito(items);
   window.UI.actualizarResumen(
     window.Carrito.getSubtotal(),
+    window.Carrito.getDiscount(),
     window.Carrito.getTax(),
     window.Carrito.getShipping(),
     window.Carrito.getTotal()
   );
   window.addEventListener("cart-updated", (event) => {
-    const { items, subtotal, tax, shipping, total } = event.detail;
+    const { items, subtotal, discount, tax, shipping, total } = event.detail;
     window.UI.mostrarCarrito(items);
-    window.UI.actualizarResumen(subtotal, tax, shipping, total);
+    window.UI.actualizarResumen(subtotal, discount, tax, shipping, total);
   });
   const btnClearCart = document.getElementById("clear-cart");
   if (btnClearCart) {
@@ -44,12 +45,7 @@ function inicializarPaginaCarrito() {
         window.UI.showToast("Tu carrito está vacío. Agrega productos antes de pagar.", "warning");
         return;
       }
-      window.UI.showToast("¡Procesando tu pedido! Espere un momento...", "success");
-      
-      setTimeout(() => {
-        alert("¡Compra exitosa! Tu pedido en TrendyShop llegará en 48 horas.");
-        window.Carrito.clear();
-      }, 1000);
+      window.location.href = "../checkout/index.html";
     });
   }
 }

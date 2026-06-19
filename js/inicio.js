@@ -1,6 +1,36 @@
 document.addEventListener("DOMContentLoaded", () => {
-    if (window.Carrito) {
-        window.Carrito.init();
+    const ctaBtn = document.getElementById("cta-join-btn");
+    if (ctaBtn && localStorage.getItem("auth-token")) {
+        ctaBtn.classList.add("d-none");
+    }
+
+    const promoModal = document.getElementById("promo-modal");
+    const closePromoBtn = document.getElementById("close-promo-modal");
+    const continueBtn = document.getElementById("continue-browsing");
+
+    if (promoModal && !localStorage.getItem("auth-token") && !sessionStorage.getItem("promo-closed")) {
+        promoModal.classList.remove("d-none");
+    }
+
+    const cerrarModal = () => {
+        if (promoModal) {
+            promoModal.classList.add("d-none");
+            sessionStorage.setItem("promo-closed", "true");
+        }
+    };
+
+    if (closePromoBtn) {
+        closePromoBtn.addEventListener("click", cerrarModal);
+    }
+    if (continueBtn) {
+        continueBtn.addEventListener("click", cerrarModal);
+    }
+    if (promoModal) {
+        promoModal.addEventListener("click", (e) => {
+            if (e.target === promoModal) {
+                cerrarModal();
+            }
+        });
     }
 
     const container = document.getElementById("featured-products");
@@ -50,38 +80,5 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.error("Error al cargar productos destacados:", error);
                 container.innerHTML = `<p class="text-danger">Error al conectar con la API. Intente de nuevo más tarde.</p>`;
             });
-    }
-    window.addEventListener("cart-updated", (event) => {
-        const badge = document.getElementById("cart-badge");
-        if (badge) {
-            const totalQty = event.detail.totalQty;
-            badge.textContent = totalQty;
-            if (totalQty === 0) {
-                badge.classList.add("d-none");
-            } else {
-                badge.classList.remove("d-none");
-            }
-        }
-    });
-
-    // Manejador del Formulario del Newsletter (Suscripción)
-    const newsletterForm = document.getElementById("newsletterForm");
-    if (newsletterForm) {
-        newsletterForm.addEventListener("submit", (e) => {
-            e.preventDefault();
-            const emailInput = document.getElementById("newsletter-email");
-            const responseEl = document.getElementById("newsletter-response");
-            
-            if (emailInput && responseEl) {
-                // Mostrar mensaje de éxito local en el banner
-                responseEl.classList.remove("d-none");
-                emailInput.value = "";
-                
-                // Disparar toast global de éxito
-                if (window.UI && typeof window.UI.showToast === "function") {
-                    window.UI.showToast("¡Te has unido al Beauty Club! Revisa tu correo.", "success");
-                }
-            }
-        });
     }
 });

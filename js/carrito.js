@@ -65,17 +65,23 @@ const Carrito = {
       return total + (precio * item.quantity);
     }, 0);
   },
-
+  getDiscount() {
+    const token = localStorage.getItem("auth-token");
+    if (token) {
+      return Math.round(this.getSubtotal() * 0.10);
+    }
+    return 0;
+  },
   getTax() {
-    return this.getSubtotal() * 0.19;
+    return Math.round((this.getSubtotal() - this.getDiscount()) * 0.19);
   },
   getShipping() {
-    const subtotal = this.getSubtotal();
-    if (subtotal === 0) return 0;
+    const subtotal = this.getSubtotal() - this.getDiscount();
+    if (subtotal <= 0) return 0;
     return subtotal > 150000 ? 0 : 15000;
   },
   getTotal() {
-    return this.getSubtotal() + this.getTax() + this.getShipping();
+    return this.getSubtotal() - this.getDiscount() + this.getTax() + this.getShipping();
   },
   save() {
     if (window.CartService) {
@@ -91,6 +97,7 @@ const Carrito = {
         items: this.items,
         totalQty: this.getTotalQuantity(),
         subtotal: this.getSubtotal(),
+        discount: this.getDiscount(),
         tax: this.getTax(),
         shipping: this.getShipping(),
         total: this.getTotal()

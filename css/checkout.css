@@ -1,0 +1,78 @@
+.checkout-card {
+    background: rgba(255, 255, 255, 0.72) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(226, 69, 133, 0.14) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 30px rgba(226, 69, 133, 0.05) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.checkout-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 36px rgba(226, 69, 133, 0.09) !important;
+}
+
+.checkout-card .form-control,
+.checkout-card .form-select {
+    background: rgba(255, 255, 255, 0.6) !important;
+    border: 1.5px solid rgba(226, 69, 133, 0.15) !important;
+    border-radius: 12px !important;
+    color: #2c0e1e !important;
+    padding: 10px 14px !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.checkout-card .form-control:focus,
+.checkout-card .form-select:focus {
+    background: #ffffff !important;
+    border-color: #e24585 !important;
+    box-shadow: 0 0 0 3px rgba(226, 69, 133, 0.18) !important;
+    outline: none;
+}
+
+.btn-check + .btn-outline-secondary {
+    border: 1.5px solid rgba(226, 69, 133, 0.15) !important;
+    border-radius: 12px !important;
+    color: #63505a !important;
+    background: rgba(255, 255, 255, 0.5) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.btn-check + .btn-outline-secondary:hover {
+    color: #e24585 !important;
+    background: rgba(226, 69, 133, 0.05) !important;
+    border-color: #e24585 !important;
+    transform: translateY(-1px);
+}
+
+.btn-check:checked + .btn-outline-secondary {
+    color: #ffffff !important;
+    background: linear-gradient(135deg, #ff5722 0%, #e24585 100%) !important;
+    border-color: transparent !important;
+    box-shadow: 0 4px 12px rgba(226, 69, 133, 0.25) !important;
+}
+
+.payment-fields {
+    animation: fadeIn 0.4s ease-out;
+}
+
+.checkout-item-thumb {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    background: #ffffff;
+    border-radius: 8px;
+    border: 1px solid rgba(226, 69, 133, 0.08);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 991.98px) {
+    .sticky-lg-top {
+        position: static !important;
+    }
+}
