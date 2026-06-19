@@ -1,11 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TrendyShop</title>
+    <title>TrendyShop | Inicio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    
+    <header class="navbar">
+        <a class="logo d-flex align-items-center gap-2 text-white text-decoration-none" href="index.html">
+            <img src="assets/images/trendyshopLogo.png" alt="TS" onerror="this.src='https://via.placeholder.com/70?text=TS';">
+            <span class="fw-bold" style="font-family: 'Outfit', sans-serif; font-size: 1.4rem;">TrendyShop</span>
+        </a>
+        <nav class="navEnlaces d-flex align-items-center">
+            <a href="index.html" class="fw-semibold">Inicio</a>
+            <a href="catalogo/index.html">Catálogo</a>
+            <a href="quienes-somos/index.html">Nosotros</a>
+            <a href="contactanos/index.html">Contacto</a>
+            <a href="carrito/index.html" class="position-relative ms-3 btn btn-outline-light btn-sm px-3 py-1">
+                <i class="bi bi-cart3 me-1"></i> Carrito
+                <span id="cart-badge" class="badge bg-danger rounded-pill position-absolute top-0 start-100 translate-middle d-none">0</span>
+            </a>
+        </nav>
+    </header>
+    <section class="section1 container">
+        <h1 class="display-4 fw-bold" style="font-family: 'Outfit', sans-serif; color: var(--color-text);">TrendyShop</h1>
+        <p class="lead text-muted mt-3">Tu tienda favorita de ropa y accesorios en Colombia. Diseños modernos, envíos rápidos en 48 horas y la calidad que mereces.</p>
+        <a href="catalogo/index.html" class="boton fw-bold shadow-sm">
+            <i class="bi bi-bag-fill me-2"></i>Ver Catálogo
+        </a>
+    </section>
+    <section class="section3 bg-light py-5">
+        <div class="container">
+            <h2 class="h2 fw-bold text-center mb-5" style="font-family: 'Outfit', sans-serif; color: var(--color-text);">Productos Destacados</h2>
+            <div class="cards" id="featured-products">
+                <div class="text-center w-100 py-5">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Cargando destacados...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p class="mb-1">&copy; 2026 TrendyShop. Todos los derechos reservados.</p>
+        <p class="small mb-0" style="color: #bbb;">Bogotá & Medellín, Colombia.</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/productos.js"></script>
+    <script src="services/apiService.js"></script>
+    <script src="services/productService.js"></script>
+    <script src="services/cartService.js"></script>
+    <script src="js/carrito.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/inicio.js"></script>
+
 </body>
 </html>
