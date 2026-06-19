@@ -3,45 +3,90 @@
 <head>
   <meta charset="UTF-8">
   <title>Quiénes Somos - TrendyShop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Hojas de estilo del proyecto -->
+  <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/quienes-somos.css">
 </head>
-<body>
-  <nav>
-    <a href="index.html">Inicio</a>
-    <a href="catalogo.html">Catálogo</a>
-    <a href="quienes-somos.html">Quiénes Somos</a>
-    <a href="contactanos.html">Contáctanos</a>
-    <a href="carrito.html">Carrito 🛒 <span id="contador">0</span></a>
-  </nav>
+<body class="d-flex flex-column min-vh-100 bg-light">
 
-  <section class="section">
-    <h2>Quiénes Somos</h2>
-    <p>
-      TrendyShop nació en 2018 con la misión de ofrecer moda accesible y confiable para jóvenes en Colombia. 
-      Con tiendas en Bogotá y Medellín, y ahora con nuestra tienda online, buscamos recuperar la confianza 
-      de nuestros clientes ofreciendo transparencia, rapidez y una experiencia de compra excepcional.
-    </p>
+  <!-- Barra de Navegación Común -->
+  <header class="navbar">
+      <a class="logo d-flex align-items-center gap-2 text-white text-decoration-none" href="../index.html">
+          <img src="../assets/images/trendyshopLogo.png" alt="TS" onerror="this.src='https://via.placeholder.com/70?text=TS';">
+          <span class="fw-bold" style="font-family: 'Outfit', sans-serif; font-size: 1.4rem;">TrendyShop</span>
+      </a>
+      <nav class="navEnlaces d-flex align-items-center">
+          <a href="../index.html">Inicio</a>
+          <a href="../catalogo/index.html">Catálogo</a>
+          <a href="quienes-somos.html" class="fw-semibold active text-primary">Nosotros</a>
+          <a href="../contactanos/index.html">Contacto</a>
+          <a href="../carrito/index.html" class="position-relative ms-3 btn btn-outline-light btn-sm px-3 py-1">
+              <i class="bi bi-cart3 me-1"></i> Carrito
+              <span id="cart-badge" class="badge bg-danger rounded-pill position-absolute top-0 start-100 translate-middle d-none">0</span>
+          </a>
+      </nav>
+  </header>
 
-    <h3 class="gallery-title">Nuestras Tiendas y Equipo</h3>
-    <div class="gallery">
-      <div class="image-card">
-        <img src="../assets/images/TrendyShopBogota.jpg" alt="Tienda TrendyShop Bogotá">
-        <div class="overlay">Bogotá</div>
+  <!-- Contenido Principal -->
+  <main class="container my-5 flex-grow-1">
+    <section class="section">
+      <h1 class="display-5 fw-bold mb-4" style="font-family: 'Outfit', sans-serif;">Quiénes Somos</h1>
+      <p class="lead text-muted mb-5" style="line-height: 1.7;">
+        TrendyShop nació en 2018 con la misión de ofrecer moda accesible y confiable para jóvenes en Colombia. 
+        Con tiendas en Bogotá y Medellín, y ahora con nuestra tienda online, buscamos recuperar la confianza 
+        de nuestros clientes ofreciendo transparencia, rapidez y una experiencia de compra excepcional.
+      </p>
+
+      <h2 class="gallery-title h4 fw-bold mb-4 text-center text-sm-start" style="font-family: 'Outfit', sans-serif;">
+        Nuestras Tiendas y Equipo
+      </h2>
+      
+      <div class="gallery d-flex flex-wrap gap-4 justify-content-center justify-content-sm-start">
+        <div class="image-card shadow-sm">
+          <img src="../assets/images/TrendyShopBogota.jpg" alt="Tienda TrendyShop Bogotá" class="img-fluid rounded">
+          <div class="overlay">Bogotá</div>
+        </div>
+        <div class="image-card shadow-sm">
+          <img src="../assets/images/TrendyShopMedellin.jpg" alt="Tienda TrendyShop Medellín" class="img-fluid rounded">
+          <div class="overlay">Medellín</div>
+        </div>
+        <div class="image-card shadow-sm">
+          <!-- Corrección del nombre del archivo a 'Equipo.jpg' (mayúscula) para evitar 404 en hosting case-sensitive -->
+          <img src="../assets/images/Equipo.jpg" alt="Equipo TrendyShop" class="img-fluid rounded">
+          <div class="overlay">Equipo</div>
+        </div>
       </div>
-      <div class="image-card">
-        <img src="../assets/images/TrendyShopMedellin.jpg" alt="Tienda TrendyShop Medellín">
-        <div class="overlay">Medellín</div>
-      </div>
-      <div class="image-card">
-        <img src="../assets/images/equipo.jpg" alt="Equipo TrendyShop">
-        <div class="overlay">Equipo</div>
-      </div>
-    </div>
 
-  </section>
+    </section>
+  </main>
 
-  <script src="js/carrito.js"></script>
-  <script src="js/ui.js"></script>
-  <script src="js/app.js"></script>
+  <!-- Footer Común -->
+  <footer class="bg-dark text-white-50 py-4 mt-auto border-top">
+      <div class="container text-center">
+          <p class="mb-1">&copy; 2026 TrendyShop. Todos los derechos reservados.</p>
+          <p class="small mb-0">Bogotá & Medellín, Colombia.</p>
+      </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Scripts de la aplicación (Cargar dependencias para navbar y carrito) -->
+  <script src="../js/productos.js"></script>
+  <script src="../services/apiService.js"></script>
+  <script src="../services/productService.js"></script>
+  <script src="../services/cartService.js"></script>
+  <script src="../js/carrito.js"></script>
+  <script src="../js/ui.js"></script>
+  
+  <!-- Script de inicialización de nosotros -->
+  <script src="../js/quienes-somos.js"></script>
 </body>
 </html>
