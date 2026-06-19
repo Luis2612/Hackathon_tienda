@@ -22,15 +22,71 @@ const UI = {
 
     if (items.length === 0) {
       container.innerHTML = `
-        <div class="empty-cart-container py-5 text-center">
-          <i class="bi bi-cart-x empty-cart-icon text-muted" style="font-size: 4rem;"></i>
+        <div class="empty-cart-container py-4 text-center">
+          <i class="bi bi-cart-x empty-cart-icon text-muted" style="font-size: 3.5rem;"></i>
           <h3 class="h5 mt-3 fw-bold">Tu carrito está vacío</h3>
           <p class="text-muted small">¡Agrega algunos productos del catálogo para comenzar a comprar!</p>
-          <a href="../catalogo/index.html" class="btn btn-primary btn-sm rounded-pill mt-3 px-4 py-2 fw-bold">
+          <a href="../catalogo/index.html" class="btn btn-primary btn-sm rounded-pill mt-2 mb-4 px-4 py-2 fw-bold shadow-sm">
             <i class="bi bi-shop me-2"></i>Ir al Catálogo
           </a>
         </div>
+        <hr class="my-4">
+        <div class="recommendations-section">
+          <h4 class="h6 fw-bold mb-3 text-center text-sm-start" style="font-family: 'Outfit', sans-serif; color: #250f1a;">Quizás te interese...</h4>
+          <div class="row row-cols-1 row-cols-sm-3 g-3" id="recommendations-grid">
+             <div class="w-100 text-center py-4">
+                 <div class="spinner-border spinner-border-sm text-primary" role="status">
+                     <span class="visually-hidden">Cargando sugerencias...</span>
+                 </div>
+             </div>
+          </div>
+        </div>
       `;
+
+      if (window.ProductService) {
+        window.ProductService.getFeaturedProducts(3)
+          .then(recommended => {
+            const grid = document.getElementById("recommendations-grid");
+            if (!grid) return;
+
+            let recsHtml = "";
+            recommended.forEach(p => {
+              const price = (p.precio || p.price || 0).toLocaleString('es-CO');
+              recsHtml += `
+                <div class="col">
+                  <div class="card h-100 p-2 border rounded-4 text-center bg-white shadow-sm">
+                    <img src="${p.imagen || p.image}" alt="${p.nombre || p.title}" class="img-fluid rounded mx-auto mb-2" style="height: 100px; object-fit: contain;">
+                    <h5 class="small fw-bold text-truncate text-dark mb-1" style="font-size: 0.85rem;" title="${p.nombre || p.title}">${p.nombre || p.title}</h5>
+                    <div class="text-primary fw-bold small mb-2" style="font-size: 0.9rem;">$${price}</div>
+                    <button class="btn btn-primary btn-sm w-100 rounded-pill py-1 fw-semibold btn-quick-add shadow-sm" data-id="${p.id}" style="font-size: 0.75rem;">
+                      <i class="bi bi-cart-plus me-1"></i>Agregar
+                    </button>
+                  </div>
+                </div>
+              `;
+            });
+            grid.innerHTML = recsHtml;
+
+            grid.querySelectorAll(".btn-quick-add").forEach(btn => {
+              btn.addEventListener("click", (e) => {
+                const btnEl = e.target.closest(".btn-quick-add");
+                const id = parseInt(btnEl.getAttribute("data-id"));
+                const prod = recommended.find(p => p.id === id);
+                if (prod && window.Carrito) {
+                  window.Carrito.addItem(prod, 1);
+                }
+              });
+            });
+          })
+          .catch(err => {
+            console.error("Error al cargar sugerencias en carrito:", err);
+            const grid = document.getElementById("recommendations-grid");
+            if (grid) {
+              grid.innerHTML = `<p class="text-muted small text-center w-100">No se pudieron cargar recomendaciones en este momento.</p>`;
+            }
+          });
+      }
+
       this.actualizarResumen(0, 0, 0, 0);
       return;
     }
@@ -45,13 +101,11 @@ const UI = {
         <article class="card cart-item mb-3 rounded-4 shadow-sm border-0" data-product-id="${product.id}">
           <div class="card-body d-flex flex-column flex-sm-row align-items-center gap-3 p-3">
             
-            <!-- Imagen del Producto -->
             <img src="${product.imagen || product.image || 'https://via.placeholder.com/100'}" 
                  alt="${product.nombre || product.title}" 
                  class="cart-item__image img-fluid"
                  onerror="this.src='https://via.placeholder.com/100?text=Producto'">
             
-            <!-- Detalles del Producto -->
             <div class="flex-grow-1 text-center text-sm-start">
               <h2 class="cart-item__name h6 mb-1">${product.nombre || product.title}</h2>
               <span class="badge bg-light text-secondary border mb-2" style="font-size: 0.75rem;">
@@ -61,18 +115,15 @@ const UI = {
                 $${price.toLocaleString('es-CO')} <span class="text-muted small fw-normal">c/u</span>
               </div>
             </div>
-
-            <!-- Cantidad e Interacciones -->
+ 
             <div class="d-flex flex-row flex-sm-column align-items-center align-items-sm-end gap-3 gap-sm-2 w-100 w-sm-auto justify-content-between">
               
-              <!-- Controles de Cantidad -->
               <div class="quantity-control shadow-sm">
                 <button class="btn-qty-minus" data-id="${product.id}">-</button>
                 <input type="text" value="${item.quantity}" readonly>
                 <button class="btn-qty-plus" data-id="${product.id}">+</button>
               </div>
-
-              <!-- Botón Eliminar -->
+ 
               <button class="btn btn-sm btn-outline-danger cart-item__remove border-0" data-id="${product.id}">
                 <i class="bi bi-trash-fill"></i> <span class="d-none d-sm-inline">Eliminar</span>
               </button>
@@ -165,3 +216,59 @@ const UI = {
 };
 
 window.UI = UI;
+
+document.addEventListener("DOMContentLoaded", () => {
+  const nav = document.querySelector(".navEnlaces");
+  if (!nav) return;
+
+  const cartBtn = nav.querySelector("a[href*='carrito']");
+
+  const authContainer = document.createElement("div");
+  authContainer.className = "d-flex align-items-center d-inline-block ms-3";
+
+  const isSubfolder = window.location.pathname.split('/').filter(Boolean).some(part => 
+    ["catalogo", "about", "contactanos", "carrito", "login"].includes(part.toLowerCase())
+  );
+  const prefix = isSubfolder ? "../" : "";
+
+  const token = localStorage.getItem("auth-token");
+  const username = localStorage.getItem("auth-username");
+
+  if (token && username) {
+    authContainer.innerHTML = `
+      <span class="text-dark fw-semibold small d-none d-md-inline me-2" style="font-family: 'Outfit', sans-serif;">
+        <i class="bi bi-person-circle text-primary me-1"></i>${username}
+      </span>
+      <a href="#" id="auth-logout-btn" class="text-danger fw-bold small d-flex align-items-center" title="Cerrar Sesión" style="text-decoration: none;">
+        <i class="bi bi-box-arrow-right fs-5"></i>
+      </a>
+    `;
+  } else {
+    authContainer.innerHTML = `
+      <a href="${prefix}login/index.html" class="text-primary fw-bold small d-flex align-items-center gap-1" style="text-decoration: none; font-family: 'Outfit', sans-serif;">
+        <i class="bi bi-person-lock fs-5"></i> <span class="d-none d-sm-inline">Ingresar</span>
+      </a>
+    `;
+  }
+
+  if (cartBtn) {
+    nav.insertBefore(authContainer, cartBtn);
+  } else {
+    nav.appendChild(authContainer);
+  }
+
+  const logoutBtn = document.getElementById("auth-logout-btn");
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      localStorage.removeItem("auth-token");
+      localStorage.removeItem("auth-username");
+      if (typeof UI.showToast === "function") {
+        UI.showToast("Sesión cerrada correctamente", "success");
+      }
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+    });
+  }
+});

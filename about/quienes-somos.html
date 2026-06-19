@@ -4,22 +4,16 @@
   <meta charset="UTF-8">
   <title>Quiénes Somos - TrendyShop</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  
-  <!-- Hojas de estilo del proyecto -->
+  <link rel="icon" href="../assets/images/logo.png" type="image/png">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/quienes-somos.css">
 </head>
 <body class="d-flex flex-column min-vh-100 bg-light">
-
-  <!-- Barra de Navegación Común -->
   <header class="navbar">
       <a class="logo d-flex align-items-center gap-2 text-white text-decoration-none" href="../index.html">
-          <img src="../assets/images/trendyshopLogo.png" alt="TS" onerror="this.src='https://via.placeholder.com/70?text=TS';">
+          <img src="../assets/images/logo.png" alt="TS" onerror="this.src='https://via.placeholder.com/70?text=TS';">
           <span class="fw-bold" style="font-family: 'Outfit', sans-serif; font-size: 1.4rem;">TrendyShop</span>
       </a>
       <nav class="navEnlaces d-flex align-items-center">
@@ -33,60 +27,140 @@
           </a>
       </nav>
   </header>
-
-  <!-- Contenido Principal -->
-  <main class="container my-5 flex-grow-1">
-    <section class="section">
-      <h1 class="display-5 fw-bold mb-4" style="font-family: 'Outfit', sans-serif;">Quiénes Somos</h1>
-      <p class="lead text-muted mb-5" style="line-height: 1.7;">
-        TrendyShop nació en 2018 con la misión de ofrecer moda accesible y confiable para jóvenes en Colombia. 
-        Con tiendas en Bogotá y Medellín, y ahora con nuestra tienda online, buscamos recuperar la confianza 
-        de nuestros clientes ofreciendo transparencia, rapidez y una experiencia de compra excepcional.
-      </p>
-
-      <h2 class="gallery-title h4 fw-bold mb-4 text-center text-sm-start" style="font-family: 'Outfit', sans-serif;">
-        Nuestras Tiendas y Equipo
-      </h2>
-      
-      <div class="gallery d-flex flex-wrap gap-4 justify-content-center justify-content-sm-start">
-        <div class="image-card shadow-sm">
-          <img src="../assets/images/TrendyShopBogota.jpg" alt="Tienda TrendyShop Bogotá" class="img-fluid rounded">
-          <div class="overlay">Bogotá</div>
+  <main class="flex-grow-1">
+    <section class="py-5 text-center text-white" style="background: linear-gradient(135deg, #250f1a 0%, #e24585 100%); margin-bottom: 2rem;">
+        <div class="container py-4">
+            <h1 class="display-4 fw-bold" style="font-family: 'Outfit', sans-serif;">Nuestra Historia</h1>
+            <p class="lead mb-0 opacity-75">Pasión por la belleza, la autenticidad y la confianza en ti misma.</p>
         </div>
-        <div class="image-card shadow-sm">
-          <img src="../assets/images/TrendyShopMedellin.jpg" alt="Tienda TrendyShop Medellín" class="img-fluid rounded">
-          <div class="overlay">Medellín</div>
-        </div>
-        <div class="image-card shadow-sm">
-          <!-- Corrección del nombre del archivo a 'Equipo.jpg' (mayúscula) para evitar 404 en hosting case-sensitive -->
-          <img src="../assets/images/Equipo.jpg" alt="Equipo TrendyShop" class="img-fluid rounded">
-          <div class="overlay">Equipo</div>
-        </div>
-      </div>
-
     </section>
-  </main>
 
-  <!-- Footer Común -->
+    <div class="container my-5">
+      <section class="section p-4 p-md-5 mb-5">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <span class="text-primary fw-bold text-uppercase tracking-wider d-block mb-2">Quiénes Somos</span>
+            <h2 class="display-6 fw-bold mb-4 text-start" style="font-family: 'Outfit', sans-serif; color: #250f1a;">La revolución del maquillaje en Colombia</h2>
+            <p class="lead text-muted mb-4" style="text-align: justify; font-size: 1rem; line-height: 1.7;">
+              TrendyShop nació en 2018 con la misión de ofrecer maquillaje y cosméticos accesibles, en tendencia y con calidad insuperable. 
+              Creemos firmemente que la belleza es una forma de expresión personal y libre de ataduras.
+            </p>
+            <p class="text-muted" style="text-align: justify; font-size: 0.95rem;">
+              Con presencia en Bogotá y Medellín, y despachos garantizados a nivel nacional, hemos construido una comunidad activa basada en la transparencia, el soporte personalizado y la rapidez de nuestras entregas.
+            </p>
+          </div>
+          <div class="col-lg-6">
+            <div class="row g-4">
+              <div class="col-sm-6">
+                <div class="p-4 bg-light rounded-4 border-start border-primary border-4 shadow-sm h-100">
+                  <div class="text-primary fs-3 mb-2"><i class="bi bi-bullseye"></i></div>
+                  <h3 class="h5 fw-bold text-dark">Nuestra Misión</h3>
+                  <p class="small text-muted mb-0">Democratizar el acceso al maquillaje e inspirar a cada persona a celebrar su belleza natural.</p>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="p-4 bg-light rounded-4 border-start border-secondary border-4 shadow-sm h-100">
+                  <div class="text-secondary fs-3 mb-2"><i class="bi bi-eye"></i></div>
+                  <h3 class="h5 fw-bold text-dark">Nuestra Visión</h3>
+                  <p class="small text-muted mb-0">Ser la tienda online y física preferida en Colombia, liderando en innovación, calidad y servicio al cliente.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="row g-4 mb-5 text-center">
+        <div class="col-6 col-md-3">
+          <div class="bg-white p-4 rounded-4 shadow-sm border h-100">
+            <div class="display-5 fw-bold text-primary mb-1">5+</div>
+            <div class="text-muted small fw-semibold text-uppercase">Años de Historia</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="bg-white p-4 rounded-4 shadow-sm border h-100">
+            <div class="display-5 fw-bold text-primary mb-1">10K+</div>
+            <div class="text-muted small fw-semibold text-uppercase">Clientes Felices</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="bg-white p-4 rounded-4 shadow-sm border h-100">
+            <div class="display-5 fw-bold text-primary mb-1">48h</div>
+            <div class="text-muted small fw-semibold text-uppercase">Envíos Nacionales</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="bg-white p-4 rounded-4 shadow-sm border h-100">
+            <div class="display-5 fw-bold text-primary mb-1">2</div>
+            <div class="text-muted small fw-semibold text-uppercase">Tiendas Físicas</div>
+          </div>
+        </div>
+      </section>
+      <section class="section p-4 p-md-5 mb-5 text-center">
+        <h2 class="h2 fw-bold mb-5" style="font-family: 'Outfit', sans-serif; color: #250f1a;">Valores que nos guían</h2>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="p-3">
+              <div class="d-inline-flex align-items-center justify-content-center text-primary rounded-circle fs-3 mb-3" style="width: 60px; height: 60px; background-color: #fef0f6;">
+                <i class="bi bi-gem"></i>
+              </div>
+              <h3 class="h5 fw-bold mb-2">Calidad Garantizada</h3>
+              <p class="small text-muted mb-0">Probamos rigurosamente cada producto cosmético de nuestro catálogo para certificar su seguridad y efectividad.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3">
+              <div class="d-inline-flex align-items-center justify-content-center text-secondary rounded-circle fs-3 mb-3" style="width: 60px; height: 60px; background-color: #fff3f0;">
+                <i class="bi bi-shield-check"></i>
+              </div>
+              <h3 class="h5 fw-bold mb-2">Confianza Total</h3>
+              <p class="small text-muted mb-0">Garantizamos compras protegidas, devoluciones ágiles y soporte personalizado en cada paso.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3">
+              <div class="d-inline-flex align-items-center justify-content-center text-primary rounded-circle fs-3 mb-3" style="width: 60px; height: 60px; background-color: #fef0f6;">
+                <i class="bi bi-truck"></i>
+              </div>
+              <h3 class="h5 fw-bold mb-2">Envío Veloz</h3>
+              <p class="small text-muted mb-0">Contamos con despachos directos en 24/48 horas para que nunca te falte tu maquillaje favorito.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section p-4 p-md-5">
+        <h2 class="gallery-title h3 fw-bold mb-4" style="font-family: 'Outfit', sans-serif; color: #250f1a;">Nuestras Sedes y Equipo</h2>
+        <p class="text-center text-muted mb-5">Visita nuestras tiendas físicas en el país y conoce al equipo detrás de la pantalla.</p>
+        
+        <div class="gallery d-flex flex-wrap gap-4 justify-content-center">
+          <div class="image-card shadow-sm position-relative">
+            <img src="../assets/images/TrendyShopBogota.jpg" alt="Tienda TrendyShop Bogotá" class="img-fluid rounded">
+            <div class="overlay">Bogotá - Sede Central</div>
+          </div>
+          <div class="image-card shadow-sm position-relative">
+            <img src="../assets/images/TrendyShopMedellin.jpg" alt="Tienda TrendyShop Medellín" class="img-fluid rounded">
+            <div class="overlay">Medellín - El Poblado</div>
+          </div>
+          <div class="image-card shadow-sm position-relative">
+            <img src="../assets/images/Equipo.jpg" alt="Equipo TrendyShop" class="img-fluid rounded">
+            <div class="overlay">Equipo Corporativo</div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
   <footer class="bg-dark text-white-50 py-4 mt-auto border-top">
       <div class="container text-center">
           <p class="mb-1">&copy; 2026 TrendyShop. Todos los derechos reservados.</p>
           <p class="small mb-0">Bogotá & Medellín, Colombia.</p>
       </div>
   </footer>
-
-  <!-- Bootstrap 5 JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Scripts de la aplicación (Cargar dependencias para navbar y carrito) -->
   <script src="../js/productos.js"></script>
   <script src="../services/apiService.js"></script>
   <script src="../services/productService.js"></script>
   <script src="../services/cartService.js"></script>
   <script src="../js/carrito.js"></script>
   <script src="../js/ui.js"></script>
-  
-  <!-- Script de inicialización de nosotros -->
   <script src="../js/quienes-somos.js"></script>
 </body>
 </html>

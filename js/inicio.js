@@ -63,4 +63,25 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     });
+
+    // Manejador del Formulario del Newsletter (Suscripción)
+    const newsletterForm = document.getElementById("newsletterForm");
+    if (newsletterForm) {
+        newsletterForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const emailInput = document.getElementById("newsletter-email");
+            const responseEl = document.getElementById("newsletter-response");
+            
+            if (emailInput && responseEl) {
+                // Mostrar mensaje de éxito local en el banner
+                responseEl.classList.remove("d-none");
+                emailInput.value = "";
+                
+                // Disparar toast global de éxito
+                if (window.UI && typeof window.UI.showToast === "function") {
+                    window.UI.showToast("¡Te has unido al Beauty Club! Revisa tu correo.", "success");
+                }
+            }
+        });
+    }
 });
