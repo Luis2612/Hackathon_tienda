@@ -1,0 +1,56 @@
+.login-card {
+    max-width: 480px;
+    width: 100%;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.72) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(226, 69, 133, 0.14) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 12px 36px rgba(226, 69, 133, 0.08) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 45px rgba(226, 69, 133, 0.14) !important;
+}
+
+.login-card .input-group-text {
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.login-card .form-control:focus + .input-group-text,
+.login-card .form-control:focus-within {
+    border-color: #e24585 !important;
+}
+
+.login-card .input-group {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.login-card .form-control {
+    background: rgba(255, 255, 255, 0.6) !important;
+    border: 1.5px solid rgba(226, 69, 133, 0.15) !important;
+    color: #2c0e1e !important;
+    padding: 12px 16px !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.login-card .form-control:focus {
+    background: #ffffff !important;
+    border-color: #e24585 !important;
+    box-shadow: 0 0 0 3px rgba(226, 69, 133, 0.18) !important;
+    outline: none;
+}
+
+.login-card .input-group-text {
+    background: rgba(255, 255, 255, 0.6) !important;
+    border: 1.5px solid rgba(226, 69, 133, 0.15) !important;
+}
+
+.login-card .form-control:focus ~ .input-group-text,
+.login-card .input-group:focus-within .input-group-text {
+    border-color: #e24585 !important;
+}

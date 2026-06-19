@@ -64,12 +64,23 @@ const ProductService = {
   async searchAndFilter({ query = "", category = "", sortBy = "" } = {}) {
     try {
       let products = [];
-      if (category) {
-        const data = await window.ApiService.get(`/products/category/${encodeURIComponent(category)}`);
-        products = data.map(item => this.mapProduct(item));
-      } else {
-        products = await this.getProducts();
+      try {
+        if (category) {
+          const data = await window.ApiService.get(`/products/category/${encodeURIComponent(category)}`);
+          products = data.map(item => this.mapProduct(item));
+        } else {
+          products = await this.getProducts();
+        }
+      } catch (apiError) {
+        console.warn("Fallo al obtener productos filtrados de la API, filtrando localmente sobre el respaldo...", apiError);
+        const allProducts = await this.getProducts();
+        if (category) {
+          products = allProducts.filter(p => p.categoria === category || p.category === category);
+        } else {
+          products = allProducts;
+        }
       }
+
       if (query.trim()) {
         const q = query.toLowerCase().trim();
         products = products.filter(p => 
