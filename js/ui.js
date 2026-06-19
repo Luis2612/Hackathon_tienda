@@ -236,7 +236,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const nav = document.querySelector(".navEnlaces");
   if (!nav) return;
 
-  const cartBtn = nav.querySelector("a[href*='carrito']");
+  const cartBtn = Array.from(nav.querySelectorAll("a")).find(a => 
+    a.textContent.includes("Carrito") || a.querySelector(".bi-cart3")
+  );
 
   const authContainer = document.createElement("div");
   authContainer.className = "d-flex align-items-center d-inline-block ms-3";
@@ -286,4 +288,12 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 1000);
     });
   }
+
+  const whatsappBtn = document.createElement("a");
+  whatsappBtn.href = "https://wa.me/573118867248?text=Hola!%20Tengo%20una%20consulta%20sobre%20TrendyShop";
+  whatsappBtn.className = "whatsapp-btn";
+  whatsappBtn.target = "_blank";
+  whatsappBtn.rel = "noopener";
+  whatsappBtn.innerHTML = '<i class="bi bi-whatsapp"></i>';
+  document.body.appendChild(whatsappBtn);
 });

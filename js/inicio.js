@@ -4,6 +4,35 @@ document.addEventListener("DOMContentLoaded", () => {
         ctaBtn.classList.add("d-none");
     }
 
+    const promoModal = document.getElementById("promo-modal");
+    const closePromoBtn = document.getElementById("close-promo-modal");
+    const continueBtn = document.getElementById("continue-browsing");
+
+    if (promoModal && !localStorage.getItem("auth-token") && !sessionStorage.getItem("promo-closed")) {
+        promoModal.classList.remove("d-none");
+    }
+
+    const cerrarModal = () => {
+        if (promoModal) {
+            promoModal.classList.add("d-none");
+            sessionStorage.setItem("promo-closed", "true");
+        }
+    };
+
+    if (closePromoBtn) {
+        closePromoBtn.addEventListener("click", cerrarModal);
+    }
+    if (continueBtn) {
+        continueBtn.addEventListener("click", cerrarModal);
+    }
+    if (promoModal) {
+        promoModal.addEventListener("click", (e) => {
+            if (e.target === promoModal) {
+                cerrarModal();
+            }
+        });
+    }
+
     const container = document.getElementById("featured-products");
     if (window.ProductService && container) {
         window.ProductService.getFeaturedProducts(4)
@@ -51,4 +80,5 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.error("Error al cargar productos destacados:", error);
                 container.innerHTML = `<p class="text-danger">Error al conectar con la API. Intente de nuevo más tarde.</p>`;
             });
+    }
 });
