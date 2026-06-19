@@ -63,20 +63,20 @@
         <div class="card p-4 shadow-sm border-0">
           <h4 class="fw-bold mb-4" style="font-family: 'Outfit', sans-serif;">Envíanos un mensaje</h4>
 
-          <form id="formContacto">
+          <form id="formContacto" action="https://formspree.io/f/mojzgnjy" method="POST">
             <div class="mb-3">
               <label class="form-label fw-semibold">Nombre</label>
-              <input type="text" id="nombre" class="form-control py-2" placeholder="Tu nombre completo">
+              <input type="text" id="nombre" name="nombre" class="form-control py-2" placeholder="Tu nombre completo">
             </div>
 
             <div class="mb-3">
               <label class="form-label fw-semibold">Correo electrónico</label>
-              <input type="email" id="email" class="form-control py-2" placeholder="correo@ejemplo.com">
+              <input type="email" id="email" name="email" class="form-control py-2" placeholder="correo@ejemplo.com">
             </div>
 
             <div class="mb-3">
               <label class="form-label fw-semibold">Mensaje</label>
-              <textarea id="mensaje" class="form-control py-2" rows="4" placeholder="Escribe tu duda o mensaje aquí..."></textarea>
+              <textarea id="mensaje" name="mensaje" class="form-control py-2" rows="4" placeholder="Escribe tu duda o mensaje aquí..."></textarea>
             </div>
 
             <button type="submit" class="btn btn-primary w-100 py-3 fw-bold mt-2 shadow-sm">
@@ -112,3 +112,4 @@
 
 </body>
 </html>
+ 
