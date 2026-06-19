@@ -1,7 +1,7 @@
 const form = document.getElementById("formContacto");
 const respuesta = document.getElementById("respuesta");
 
-form.addEventListener("submit", function (e) {
+form.addEventListener("submit", async function (e) {
   e.preventDefault();
 
   const nombre = document.getElementById("nombre").value.trim();
@@ -20,8 +20,26 @@ form.addEventListener("submit", function (e) {
     return;
   }
 
-  respuesta.textContent = "Mensaje enviado correctamente. Te responderemos pronto";
-  respuesta.style.color = "green";
+  try {
+    const response = await fetch(form.action, {
+      method: "POST",
+      body: new FormData(form),
+      headers: {
+        "Accept": "application/json"
+      }
+    });
 
-  form.reset();
+    if (response.ok) {
+      respuesta.textContent = "✅ Mensaje enviado correctamente. Te responderemos pronto 💌";
+      respuesta.style.color = "green";
+      form.reset();
+    } else {
+      respuesta.textContent = "❌ Error al enviar el mensaje.";
+      respuesta.style.color = "red";
+    }
+
+  } catch (error) {
+    respuesta.textContent = "❌ No se pudo conectar con el servidor.";
+    respuesta.style.color = "red";
+  }
 });
