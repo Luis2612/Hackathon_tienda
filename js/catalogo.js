@@ -60,12 +60,12 @@ async function initCatalog() {
     categoryLinks.forEach(link => {
         link.addEventListener("click", async (e) => {
             e.preventDefault();
-            
+
             categoryLinks.forEach(l => l.classList.remove("active"));
             link.classList.add("active");
 
             state.category = link.getAttribute("data-category") || "";
-            
+
             const url = new URL(window.location);
             if (state.category) {
                 url.searchParams.set("category", state.category);
@@ -87,7 +87,7 @@ async function initCatalog() {
 
     async function ejecutarBusqueda() {
         state.query = searchInput.value.trim();
-        
+
         const url = new URL(window.location);
         if (state.query) {
             url.searchParams.set("search", state.query);
@@ -147,7 +147,9 @@ async function initCatalog() {
             let html = "";
             products.forEach(p => {
                 const starsHtml = getStarsHtml(p.valoracion || p.rating || 0);
-                const precioFormateado = (p.precio || p.price || 0).toLocaleString("es-CO");
+                const precioBase = (p.precio || p.price || 0);
+                const precioConIva = p.precioConIva || Math.round(precioBase * 1.19);
+                const precioFormateado = precioConIva.toLocaleString("es-CO");
 
                 let categoriaVisual = p.categoria || p.category || "Varios";
                 if (categoriaVisual === "women's clothing") categoriaVisual = "Mujer";
@@ -200,7 +202,7 @@ async function initCatalog() {
             btn.addEventListener("click", (e) => {
                 const button = e.target.closest(".btn-add-cart");
                 const id = parseInt(button.getAttribute("data-id"));
-                
+
                 const product = products.find(p => p.id === id);
                 if (product && window.Carrito) {
                     window.Carrito.addItem(product);

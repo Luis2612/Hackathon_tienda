@@ -9,6 +9,7 @@ const ProductService = {
       title: item.title,
       precio: precioConvertido,
       price: precioConvertido,
+      precioConIva: Math.round(precioConvertido * 1.19),
       imagen: item.image,
       image: item.image,
       descripcion: item.description,
