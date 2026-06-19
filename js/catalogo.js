@@ -1,12 +1,4 @@
 async function initCatalog() {
-    if (window.Carrito) {
-        window.Carrito.init();
-        const totalItems = window.Carrito.getTotalQuantity();
-        if (window.UI) {
-            window.UI.updateCartBadge(totalItems);
-        }
-    }
-
     let state = {
         query: "",
         category: "",
