@@ -1,5 +1,4 @@
 :root {
-    /* Colores */
     --color-primary: #2563EB;
     --color-secondary: #06B6D4;
     --color-highlight: #8B5CF6;
@@ -11,8 +10,6 @@
     --color-text-secondary: #64748B;
 
     --color-danger: #EF4444;
-
-    /* Tipografía */
     --font-family: "Poppins", Arial, sans-serif;
 
     --text-sm: 0.875rem;   /* 14px */

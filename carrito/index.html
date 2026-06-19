@@ -3,79 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrito | TrendyShop</title>
-
+    <title>Carrito de Compras | TrendyShop</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/carrito.css">
 </head>
-<body>
-
-    <main class="cart-page">
-
-        <section class="cart">
-            <h1 class="cart__title">Mi Carrito</h1>
-
-            <div id="cart-items" class="cart__items">
-
-                <!-- Ejemplo visual de producto -->
-                <article class="cart-item">
-
-                    <img
-                        src=""
-                        alt="Producto"
-                        class="cart-item__image"
-                    >
-
-                    <div class="cart-item__info">
-                        <h2 class="cart-item__name">
-                            Camiseta Oversize
-                        </h2>
-
-                        <p class="cart-item__price">
-                            $79.900
-                        </p>
-
-                        <p class="cart-item__quantity">
-                            Cantidad: 1
-                        </p>
+<body class="bg-light d-flex flex-column min-vh-100">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm py-3">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="../index.html" style="font-family: 'Outfit', sans-serif; font-weight: 800;">
+                <span class="bg-primary text-white px-2 py-1 rounded-circle" style="font-size: 0.9rem;">TS</span>
+                TrendyShop
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center gap-3">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../catalogo/index.html">Catálogo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../quienes-somos/index.html">Quiénes Somos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contactanos/index.html">Contáctanos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-primary position-relative d-flex align-items-center gap-2 active" href="index.html">
+                            <i class="bi bi-cart3"></i> Carrito
+                            <span id="cart-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="container my-5">
+        <div class="row g-4">
+            <section class="col-lg-8">
+                <div class="card border-0 shadow-sm rounded-4 p-4 mb-4">
+                    <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-4">
+                        <h1 class="h3 mb-0" style="font-family: 'Outfit', sans-serif; font-weight: 700;">
+                            <i class="bi bi-bag-check text-primary me-2"></i>Mi Carrito
+                        </h1>
+                        <span class="badge bg-secondary rounded-pill" id="cart-count-header">0 artículos</span>
                     </div>
-
-                    <button class="cart-item__remove">
-                        Eliminar
+                    <div id="cart-items" class="d-flex flex-column gap-3">
+                        <div class="text-center py-5">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Cargando carrito...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <aside class="col-lg-4">
+                <div class="card border-0 shadow-sm rounded-4 p-4 sticky-lg-top" style="top: 100px; z-index: 10;">
+                    <h2 class="h4 border-bottom pb-3 mb-4" style="font-family: 'Outfit', sans-serif; font-weight: 700;">Resumen de Compra</h2>
+                    
+                    <div class="d-flex justify-content-between mb-3 text-muted">
+                        <span>Subtotal</span>
+                        <span id="cart-subtotal">$0</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-3 text-muted">
+                        <span>IVA (19%)</span>
+                        <span id="cart-tax">$0</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-3 text-muted">
+                        <span>Envío</span>
+                        <span id="cart-shipping">$0</span>
+                    </div>
+                    <hr class="my-4">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <span class="h5 mb-0 fw-bold">Total</span>
+                        <span class="h4 mb-0 fw-extrabold text-primary fw-bold" id="cart-total">$0</span>
+                    </div>
+                    <button class="btn btn-primary btn-lg w-100 rounded-3 mb-3 py-3 fw-bold shadow-sm" id="btn-checkout">
+                        <i class="bi bi-credit-card me-2"></i>Finalizar Compra
                     </button>
+                    <button class="btn btn-outline-danger w-100 rounded-3 py-2 fw-semibold" id="clear-cart">
+                        <i class="bi bi-trash3 me-2"></i>Vaciar Carrito
+                    </button>
+                    <div class="mt-4 p-3 bg-light rounded-3 d-flex align-items-start gap-2 fs-7 text-muted border">
+                        <i class="bi bi-shield-check text-success fs-5"></i>
+                        <div>
+                            <span class="fw-bold d-block text-dark mb-1" style="font-size: 0.85rem;">Compra 100% Segura</span>
+                            <span style="font-size: 0.8rem; display: block;">TrendyShop protege tus datos y garantiza tu envío rápido de 48 horas en Colombia.</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
 
-                </article>
-
-            </div>
-        </section>
-
-        <aside class="cart-summary">
-
-            <h2>Resumen de compra</h2>
-
-            <div class="cart-summary__row">
-                <span>Productos</span>
-                <span id="products-count">1</span>
-            </div>
-
-            <div class="cart-summary__row">
-                <span>Total</span>
-                <span id="cart-total">$79.900</span>
-            </div>
-
-            <button class="btn btn--primary">
-                Finalizar compra
-            </button>
-
-            <button class="btn btn--secondary" id="clear-cart">
-                Vaciar carrito
-            </button>
-
-        </aside>
-
+        </div>
     </main>
-
-    <script type="module" src="../js/app.js"></script>
+    <footer class="bg-dark text-white-50 py-5 mt-auto border-top">
+        <div class="container text-center">
+            <p class="mb-2">&copy; 2026 TrendyShop. Todos los derechos reservados.</p>
+            <p class="small mb-0">Bogotá & Medellín, Colombia.</p>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/productos.js"></script>
+    <script src="../services/apiService.js"></script>
+    <script src="../services/productService.js"></script>
+    <script src="../services/cartService.js"></script>
+    <script src="../js/carrito.js"></script>
+    <script src="../js/ui.js"></script>
+    <script src="../js/app.js"></script>
 
 </body>
 </html>
