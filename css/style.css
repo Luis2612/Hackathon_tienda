@@ -1,32 +1,4 @@
 /* Estilos globales */
 
 
-/* QUIENES-SOMOS*/
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-nav {
-  background: purple;
-  padding: 10px;
-}
-
-nav a {
-  color: white;
-  margin: 0 10px;
-  text-decoration: none;
-}
-
-.grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.card {
-  border: 1px solid #ccc;
-  padding: 10px;
-  width: 200px;
-}
+/*
