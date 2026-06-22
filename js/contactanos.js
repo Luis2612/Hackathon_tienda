@@ -30,11 +30,11 @@ form.addEventListener("submit", async function (e) {
     });
 
     if (response.ok) {
-      respuesta.textContent = "✅ Mensaje enviado correctamente. Te responderemos pronto 💌";
+      respuesta.textContent = "Mensaje enviado correctamente. Te responderemos pronto";
       respuesta.style.color = "green";
       form.reset();
     } else {
-      respuesta.textContent = "❌ Error al enviar el mensaje.";
+      respuesta.textContent = "Error al enviar el mensaje.";
       respuesta.style.color = "red";
     }
 
