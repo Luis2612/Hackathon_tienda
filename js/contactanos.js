@@ -39,7 +39,7 @@ form.addEventListener("submit", async function (e) {
     }
 
   } catch (error) {
-    respuesta.textContent = "❌ No se pudo conectar con el servidor.";
+    respuesta.textContent = "No se pudo conectar con el servidor.";
     respuesta.style.color = "red";
   }
 });
